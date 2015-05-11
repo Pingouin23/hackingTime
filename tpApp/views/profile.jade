@@ -1,0 +1,85 @@
+html
+  head
+    title=title
+    link(
+      href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css',
+      rel='stylesheet'
+    )
+  body
+    div.container
+
+      div.page-header
+        h1 My Profile
+
+      if errors
+        each error in errors
+          div.alert.alert-danger
+            span #{error.error}
+      if saved
+        div.alert.alert-success
+          span Your profile has been saved
+      form.login-form.form-horizontal(method='post', role='form')
+        input(name='_csrf', type='hidden', value=csrfToken)
+
+        div.form-group
+          label.col-sm-4 Nom
+          div.col-sm-8
+            input.form-control(
+              placeholder='Nom',
+              required=true,
+              name='nom',
+              type='text',
+              value='')
+        div.form-group
+          label.col-sm-4 Prenom
+          div.col-sm-8
+            input.form-control(placeholder='Prénom',
+              required=true,
+              name='prenom',
+              type='text',
+              value='')
+        div.form-group
+          label.col-sm-4 Salaire
+          div.col-sm-8
+            input.form-control(placeholder='ex : 1500 ',
+              required=true,
+              name='salaire',
+              type='text',
+              value='')
+        div.form-group
+          label.col-sm-4 Email
+          div.col-sm-8
+            input.form-control(placeholder='ex : audreyBouldassié@gmail.com ',
+              required=true,
+              name='email',
+              type='text',
+              value='')
+        div.form-group
+          label.col-sm-4 Date entrée 
+          div.col-sm-8
+            input.form-control(placeholder='ex : 20/12/2014 ',
+              required=true,
+              name='dateEntree',
+              type='text',
+              value='')
+        div.form-group
+          label.col-sm-4 Poste 
+          div.col-sm-8
+            input.form-control(placeholder='ex : Serveur domicilié fixe ',
+              required=true,
+              name='poste',
+              type='text',
+              value='')
+        div.form-group
+          label.col-sm-4 Photo 
+          div.col-sm-8
+            input.form-control(placeholder='lien URL de la photo',
+              required=false,
+              name='photo',
+              type='text',
+              value='')
+        div.form-group
+          div.col-sm-offset-4.col-sm-8
+            button.login.btn.btn-primary(type='submit') Créer
+        div.pull-right
+          a(href="/") Retour accueil 
